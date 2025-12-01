@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Front - API Concessionnaire</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Concessionnaires</h1>
+    <p class="hint">Ouvrez ce fichier après avoir lancé le serveur Django (`python manage.py runserver`).</p>
+  </header>
+
+  <main>
+    <section id="list">
+      <h2>Liste</h2>
+      <div id="concession-list">Chargement...</div>
+
+      <div style="margin-top:12px">
+        <h3>Créer un concessionnaire</h3>
+        <form id="create-concession-form">
+          <input type="text" id="new-concession-nom" placeholder="Nom" required />
+          <button type="submit" class="button">Créer</button>
+        </form>
+        <div id="create-concession-msg" class="muted"></div>
+      </div>
+    </section>
+
+    <section id="detail">
+      <h2>Détail</h2>
+      <div id="concession-detail">Sélectionnez un concessionnaire.</div>
+      <h3>Véhicules</h3>
+      <div id="vehicule-list">Aucun véhicule sélectionné.</div>
+
+      <div style="margin-top:12px">
+        <h3>Créer un véhicule</h3>
+        <form id="create-vehicule-form">
+          <input type="text" id="veh-marque" placeholder="Marque" required />
+          <select id="veh-type">
+            <option value="auto">Auto</option>
+            <option value="moto">Moto</option>
+          </select>
+          <input type="number" id="veh-chevaux" placeholder="Chevaux" required />
+          <input type="number" step="0.01" id="veh-prix" placeholder="Prix HT" required />
+          <button type="submit" class="button">Créer véhicule</button>
+        </form>
+        <div id="create-vehicule-msg" class="muted"></div>
+      </div>
+      <h3>Détail Véhicule</h3>
+      <div id="vehicule-detail">Sélectionnez un véhicule.</div>
+    </section>
+  </main>
+
+  <footer>
+    <small>Frontend minimal pour démonstration — uniquement GET.</small>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
