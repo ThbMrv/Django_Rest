@@ -4,12 +4,31 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Front - API Concessionnaire</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="/frontend/styles.css">
 </head>
 <body>
   <header>
     <h1>Concessionnaires</h1>
-    <p class="hint">Ouvrez ce fichier après avoir lancé le serveur Django (`python manage.py runserver`).</p>
+    <div id="auth" style="float:right; margin-top:-36px;">
+      <span id="auth-info"></span>
+      <button id="btn-show-login" class="button">Se connecter / S'inscrire</button>
+      <button id="btn-logout" class="button" style="display:none">Se déconnecter</button>
+
+      <div id="auth-forms" style="display:none; margin-top:8px; text-align:right;">
+        <form id="login-form" style="display:block;">
+          <input id="login-username" placeholder="Nom d'utilisateur" required />
+          <input id="login-password" type="password" placeholder="Mot de passe" required />
+          <button type="submit" class="button">Connexion</button>
+        </form>
+
+        <form id="register-form" style="display:block; margin-top:8px;">
+          <input id="reg-username" placeholder="Nom d'utilisateur" required />
+          <input id="reg-email" type="email" placeholder="Email" />
+          <input id="reg-password" type="password" placeholder="Mot de passe" required />
+          <button type="submit" class="button">Créer un compte</button>
+        </form>
+      </div>
+    </div>
   </header>
 
   <main>
@@ -19,10 +38,10 @@
 
       <div style="margin-top:12px">
         <h3>Créer un concessionnaire</h3>
-        <form id="create-concession-form">
-          <input type="text" id="new-concession-nom" placeholder="Nom" required />
-          <button type="submit" class="button">Créer</button>
-        </form>
+          <form id="create-concession-form">
+            <input type="text" id="new-concession-nom" placeholder="Nom" required />
+            <button type="submit" class="button">Créer</button>
+          </form>
         <div id="create-concession-msg" class="muted"></div>
       </div>
     </section>
@@ -51,11 +70,6 @@
       <div id="vehicule-detail">Sélectionnez un véhicule.</div>
     </section>
   </main>
-
-  <footer>
-    <small>Frontend minimal pour démonstration — uniquement GET.</small>
-  </footer>
-
-  <script src="app.js"></script>
+  <script src="/frontend/app.js"></script>
 </body>
 </html>

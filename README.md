@@ -27,13 +27,18 @@ python manage.py runserver
 
 Accéder à l'application
 - Frontend (démo) : http://127.0.0.1:8000/frontend/
-- Admin Django : http://127.0.0.1:8000/admin/ (utilisez le superuser créé)
+- Admin Django : http://127.0.0.1:8000/admin/
 
 API (endpoints principaux)
 - GET `/api/concessionnaires/` — liste des concessionnaires
 - GET `/api/concessionnaires/<id>/` — détail d'un concessionnaire
 - GET `/api/concessionnaires/<id>/vehicules/` — véhicules d'un concessionnaire
 - GET `/api/concessionnaires/<id>/vehicules/<id>/` — détail d'un véhicule
+
+Bonus (authentification JWT)
+- POST `/api/users/` — créer un utilisateur (payload: `{username, password}`)
+- POST `/api/token/` — obtenir tokens JWT (payload: `{username, password}`)
+- POST `/api/refresh_token/` — rafraîchir le token (payload: `{refresh}`)
 
 Notes sur `siret`
 - Le champ `siret` est stocké en base et validé (exactement 14 chiffres).
@@ -42,17 +47,5 @@ Notes sur `siret`
 
 Documentation OpenAPI
 - Swagger UI: http://127.0.0.1:8000/doc/  (installez les dépendances avec `pip install -r requirements.txt`)
-- Schéma brut: http://127.0.0.1:8000/schema/
 
-Tests rapides (exemples curl)
-```
-curl http://127.0.0.1:8000/api/concessionnaires/
-curl http://127.0.0.1:8000/api/concessionnaires/1/
-```
 
-Conseils pour la remise
-- Faites plusieurs commits clairs (ex: init, models+migration, api views, frontend, docs).
-- Poussez le dépôt public GitHub et fournissez le lien dans votre rendu.
-
-Besoin d'aide
-- Je peux: préparer des commits propres, ajouter des fixtures de démonstration, ou implémenter le bonus JWT si nécessaire. Dites‑moi ce que vous voulez.

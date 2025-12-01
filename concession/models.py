@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import RegexValidator
+from django.conf import settings
 
 
 class Concessionnaire(models.Model):
@@ -9,6 +10,14 @@ class Concessionnaire(models.Model):
         max_length=14,
         validators=[RegexValidator(regex=r'^\d{14}$', message='Le SIRET doit contenir exactement 14 chiffres.')],
         help_text='SIRET (14 chiffres), généré automatiquement pour les créations API',
+    )
+    owner = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='concessions',
+        help_text='Utilisateur ayant créé ce concessionnaire (ne pas exposer via l\'API)',
     )
 
     def __str__(self):
